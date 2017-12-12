@@ -1,0 +1,26 @@
+export const LIST = '{{modelName}}/LIST';
+
+const initialState = {
+  data: []
+};
+
+export default function reducer(state = initialState, action = {}) {
+  switch (action.type) {
+    case LIST: {
+      return { ...state, data: action.data };
+    }
+    default:
+      return state;
+  }
+}
+
+export function list() {
+  return (dispatch) => {
+    fetch('{{url}}')
+      .then(response => response.json())
+      .then(data => dispatch({
+        type: LIST,
+        data
+      }));
+  };
+}

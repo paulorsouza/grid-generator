@@ -1,0 +1,11 @@
+{
+  "name": "plop-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^1.7.3",
+    "object-keys": "^1.0.11",
+    "plop": "^1.9.0"
+  }
+}

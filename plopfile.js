@@ -18,6 +18,13 @@ const template = 'import { Filters } from \'react-data-grid-addons\';\n\n' +
   '\n' +
   'export default columns;';
 
+const getSingleObject = function(data) {
+  if (data instanceof Array) {
+    return getObject(data[0]);
+  }
+  return data;
+}
+
 module.exports = function (plop) {
   plop.setHelper('getColumns', (url) => {
     return JSON.stringify(columns)
@@ -51,7 +58,8 @@ module.exports = function (plop) {
       fetch(answers.url)
       .then(response => response.json())
       .then(data => {
-        const keys = getKeys(data);
+        const singleObject = getSingleObject(data)
+        const keys = getKeys(singleObject);
         const obj = {names: keys}
         const render = plop.renderString(template, obj);
         fs.writeFileSync(changeFilePath, render);

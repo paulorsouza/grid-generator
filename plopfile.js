@@ -20,7 +20,7 @@ const template = 'import { Filters } from \'react-data-grid-addons\';\n\n' +
 
 const getSingleObject = function(data) {
   if (data instanceof Array) {
-    return getObject(data[0]);
+    return getSingleObject(data[0]);
   }
   return data;
 }
